@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const {SECRET} = require('../config');
 
 const userlogin = async (userCred ,res) => {
-    let {username, password} = userCred;
+    let {email, password} = userCred;
 
-    const user = await User.findOne({username});
+    const user = await User.findOne({email});
     if(!user){
         return res.status(404).json({
             message: "USER NOT FOUND",
@@ -28,7 +28,7 @@ const userlogin = async (userCred ,res) => {
             _id: user._id,
             role: user.role,
             email: user.email,
-            token: `${token}`,
+            token: `Bearer ${token}`,
             expiresIn: 168
         };
         return res.status(200).json({

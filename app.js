@@ -8,13 +8,13 @@ const mongoose = require("mongoose");
 const userRoutes = require('./routes/users');
 
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/Hospital",
+  "mongodb+srv://admin:admin@hospital-management.xkqgfiw.mongodb.net/?retryWrites=true&w=majority",
 );
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
-  console.log("Connected successfully");
+  console.log("Connected successfully with Mongo");
 });
 
 
@@ -36,7 +36,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use("/patients", patientRoutes);
 app.use("/users", userRoutes);
 
 app.use((req, res, next) => {
