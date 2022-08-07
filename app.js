@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const userRoutes = require('./routes/users');
 
 mongoose.connect(
-  "mongodb+srv://admin:admin@hospital-management.xkqgfiw.mongodb.net/?retryWrites=true&w=majority",
+  "mongodb://35.202.7.81:27017/hospital",
 );
 
 const db = mongoose.connection;
